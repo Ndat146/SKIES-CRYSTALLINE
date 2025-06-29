@@ -71,6 +71,8 @@ public class CubeMove : MonoBehaviour
         UpdateState(dir);
         SnapToGrid();
         isMoving = false;
+        Object.FindFirstObjectByType<LoseDetector>()?.CheckNow();  
+
     }
 
     Vector3 GetRotationAnchor(Vector3 dir)
@@ -172,18 +174,8 @@ public class CubeMove : MonoBehaviour
             Mathf.Round(transform.eulerAngles.y / 90f) * 90f,
             Mathf.Round(transform.eulerAngles.z / 90f) * 90f
         );
-        //if (currentState == Orientation.Upright)
-        //{
-        //    Collider[] colliders = Physics.OverlapSphere(transform.position, 0.1f);
-        //    foreach (var col in colliders)
-        //    {
-        //        if (col.CompareTag("Goal"))
-        //        {
-        //            GameManager.Instance.WinGame(transform);
-        //        }
-        //    }
-        //}
-        if (currentState == Orientation.Upright)
+        
+        if (currentState == Orientation.Upright && !GameManager.Instance.HasGameEnded())
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 0.3f);
             foreach (var col in colliders)
