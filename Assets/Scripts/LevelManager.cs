@@ -45,10 +45,13 @@ public class LevelManager : MonoBehaviour
     }
     public void ContinueGame()
     {
-        HomeFalse();  
+        DOTween.KillAll();
+
+        HomeFalse();
         LoadLevel(currentLevelIndex);
         AudioManager.Instance.PlayGameMusic();
     }
+
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject homePanel;
