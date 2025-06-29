@@ -67,6 +67,7 @@ public class CubeMove : MonoBehaviour
             yield return null;
         }
 
+
         UpdateState(dir);
         SnapToGrid();
         isMoving = false;
@@ -135,6 +136,7 @@ public class CubeMove : MonoBehaviour
             if (dir == Vector3.forward || dir == Vector3.back)
                 currentState = Orientation.Upright;
         }
+        Debug.Log("Updated orientation: " + currentState);
     }
 
     void SnapToGrid()
@@ -170,5 +172,39 @@ public class CubeMove : MonoBehaviour
             Mathf.Round(transform.eulerAngles.y / 90f) * 90f,
             Mathf.Round(transform.eulerAngles.z / 90f) * 90f
         );
+        //if (currentState == Orientation.Upright)
+        //{
+        //    Collider[] colliders = Physics.OverlapSphere(transform.position, 0.1f);
+        //    foreach (var col in colliders)
+        //    {
+        //        if (col.CompareTag("Goal"))
+        //        {
+        //            GameManager.Instance.WinGame(transform);
+        //        }
+        //    }
+        //}
+        if (currentState == Orientation.Upright)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 0.3f);
+            foreach (var col in colliders)
+            {
+                Debug.Log("Found collider: " + col.name + " | Tag: " + col.tag);
+                if (col.CompareTag("Goal"))
+                {
+                    Debug.Log("YOU WIN!");
+                    GameManager.Instance.WinGame(transform);
+                }
+            }
+        }
+
     }
+    public bool IsUpright()
+    {
+        return currentState == Orientation.Upright;
+    }
+    public string GetCurrentOrientation()
+    {
+        return currentState.ToString();
+    }
+
 }
