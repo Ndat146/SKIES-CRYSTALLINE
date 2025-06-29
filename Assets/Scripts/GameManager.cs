@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject losePanel;
     public Transform[] winPanelButtons;
     private Vector3[] originalButtonScales;
+    private Vector3 originalScale = Vector3.one;
+    public GameObject homePanel;
+    public GameObject howPanel;
 
     private void Awake()
     {
@@ -110,7 +113,36 @@ public class GameManager : MonoBehaviour
         seq.Append(cg.DOFade(1f, 0.8f).SetEase(Ease.OutQuad));
         seq.Join(losePanel.transform.DOScale(1f, 0.8f).SetEase(Ease.OutSine));
     }
+    public void HowToPlay()
+    {
+        DOTween.Kill(howPanel.transform); // Dừng các tween cũ nếu có
+        DOTween.Kill(homePanel.transform);
 
+        howPanel.SetActive(true);
+        homePanel.SetActive(false);
+
+        // Reset scale trước khi tween
+        howPanel.transform.localScale = Vector3.zero;
+
+        howPanel.transform.DOScale(originalScale, 0.5f)
+            .SetEase(Ease.OutBack)
+            .SetTarget(howPanel.transform);
+    }
+
+    public void Home()
+    {
+        DOTween.Kill(howPanel.transform);
+        DOTween.Kill(homePanel.transform);
+
+        homePanel.SetActive(true);
+        howPanel.SetActive(false);
+
+        homePanel.transform.localScale = Vector3.zero;
+
+        homePanel.transform.DOScale(originalScale, 0.5f)
+            .SetEase(Ease.OutBack)
+            .SetTarget(homePanel.transform);
+    }
     public bool HasGameEnded()
     {
         return gameEnded;
