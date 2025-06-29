@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject howPanel;
 
     public LevelManager levelManager;
+
+    public AudioManager audioManager;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("YOU WIN!");
         DOTween.Kill(boxTransform);
         boxTransform.GetComponent<CubeMove>().enabled = false;
+        audioManager.PlayWinSound();
 
         boxTransform.DOMoveY(-5f, 0.8f)
             .SetEase(Ease.InBack)
@@ -99,6 +102,7 @@ public class GameManager : MonoBehaviour
             .SetTarget(box);
 
         Invoke(nameof(ShowLosePanel), 2f);
+        audioManager.PlayLoseSound();
     }
 
     private void ShowLosePanel()

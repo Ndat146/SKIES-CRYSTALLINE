@@ -46,7 +46,8 @@ public class LevelManager : MonoBehaviour
     public void ContinueGame()
     {
         HomeFalse();  
-        LoadLevel(currentLevelIndex);  
+        LoadLevel(currentLevelIndex);
+        AudioManager.Instance.PlayGameMusic();
     }
     public GameObject winPanel;
     public GameObject losePanel;
@@ -68,6 +69,7 @@ public class LevelManager : MonoBehaviour
         {
             homePanel.SetActive(false); 
         }
+        AudioManager.Instance.PlayHomeMusic();
     }
 
     public void LoadNextLevel()
