@@ -14,10 +14,15 @@ public class GameManager : MonoBehaviour
     public GameObject homePanel;
     public GameObject howPanel;
 
+    public LevelManager levelManager;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+    private void Start()
+    {
+        homePanel.SetActive(true);
     }
 
     public void WinGame(Transform boxTransform)
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(" Complete ");
                 ShowWinPanel();
             });
+
     }
 
     private void ShowWinPanel()
@@ -115,13 +121,12 @@ public class GameManager : MonoBehaviour
     }
     public void HowToPlay()
     {
-        DOTween.Kill(howPanel.transform); // Dừng các tween cũ nếu có
+        DOTween.Kill(howPanel.transform); 
         DOTween.Kill(homePanel.transform);
 
         howPanel.SetActive(true);
         homePanel.SetActive(false);
 
-        // Reset scale trước khi tween
         howPanel.transform.localScale = Vector3.zero;
 
         howPanel.transform.DOScale(originalScale, 0.5f)
@@ -147,4 +152,9 @@ public class GameManager : MonoBehaviour
     {
         return gameEnded;
     }
+    public void ResetGame()
+    {
+        gameEnded = false;     
+    }
+
 }
