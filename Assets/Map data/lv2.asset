@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8e9960bc0d93b4f9bb00623ee6058d, type: 3}
   m_Name: lv2
   m_EditorClassIdentifier: 
-  mapPrefab: {fileID: 4010188773186089990, guid: a9316fe21c6a20b49805c9ea30266346, type: 3}
-  playerSpawnPosition: {x: 0, y: 0.5, z: 0}
+  mapPrefab: {fileID: 3081342167281299164, guid: ebc48ec72c64cf144bbf8b9b91482060, type: 3}
+  playerSpawnPosition: {x: 1, y: 0.5, z: -1}

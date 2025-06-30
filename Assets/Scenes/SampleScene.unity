@@ -2563,7 +2563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 11400000, guid: ca89d5af29b2d7b46a3f143b69a00c6b, type: 2}
-  - {fileID: 11400000, guid: ca89d5af29b2d7b46a3f143b69a00c6b, type: 2}
+  - {fileID: 11400000, guid: dff9e8e74fbb0484ca45448778ada4af, type: 2}
   playerPrefab: {fileID: 1088006004080559757, guid: 739601e5f40f8974fa9ff79082ba72d4, type: 3}
   winPanel: {fileID: 163780060}
   losePanel: {fileID: 533038665}
@@ -3854,7 +3854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &2009330645
 MeshCollider:
   m_ObjectHideFlags: 0
