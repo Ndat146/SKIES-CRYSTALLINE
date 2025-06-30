@@ -2564,6 +2564,8 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: ca89d5af29b2d7b46a3f143b69a00c6b, type: 2}
   - {fileID: 11400000, guid: dff9e8e74fbb0484ca45448778ada4af, type: 2}
+  - {fileID: 11400000, guid: 77538e7722a3ca1449144878d6e4af60, type: 2}
+  - {fileID: 11400000, guid: 52930558815ce174aa7ccd531be57624, type: 2}
   playerPrefab: {fileID: 1088006004080559757, guid: 739601e5f40f8974fa9ff79082ba72d4, type: 3}
   winPanel: {fileID: 163780060}
   losePanel: {fileID: 533038665}
